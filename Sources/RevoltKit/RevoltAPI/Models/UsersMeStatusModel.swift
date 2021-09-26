@@ -12,23 +12,23 @@ import AnyCodable
 
 /** User status */
 public struct UsersMeStatusModel: Codable, Hashable {
-
+    
     /** Custom status text */
     public var text: String?
     public var presence: UserPresenceModel?
-
+    
     public init(text: String? = nil, presence: UserPresenceModel? = nil) {
         self.text = text
         self.presence = presence
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case text
         case presence
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(text, forKey: .text)

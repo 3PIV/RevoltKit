@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 public struct ServersServerInformationCreateChannelModel: Codable, Hashable {
-
+    
     public enum TypeModel: String, Codable, CaseIterable {
         case text = "Text"
         case voice = "Voice"
@@ -26,7 +26,7 @@ public struct ServersServerInformationCreateChannelModel: Codable, Hashable {
     public var nsfw: Bool?
     /** Nonce value, prefer to use ULIDs here for better feature support.  Used to prevent double requests to create objects. */
     public var nonce: String
-
+    
     public init(type: TypeModel, name: String, description: String? = nil, nsfw: Bool? = nil, nonce: String) {
         self.type = type
         self.name = name
@@ -34,7 +34,7 @@ public struct ServersServerInformationCreateChannelModel: Codable, Hashable {
         self.nsfw = nsfw
         self.nonce = nonce
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case type
         case name
@@ -42,9 +42,9 @@ public struct ServersServerInformationCreateChannelModel: Codable, Hashable {
         case nsfw
         case nonce
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(type, forKey: .type)

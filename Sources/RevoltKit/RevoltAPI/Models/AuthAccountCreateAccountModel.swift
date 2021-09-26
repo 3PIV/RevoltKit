@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 public struct AuthAccountCreateAccountModel: Codable, Hashable {
-
+    
     /** Valid email address */
     public var email: String
     /** Password */
@@ -20,23 +20,23 @@ public struct AuthAccountCreateAccountModel: Codable, Hashable {
     public var invite: String?
     /** Captcha verification code */
     public var captcha: String?
-
+    
     public init(email: String, password: String, invite: String? = nil, captcha: String? = nil) {
         self.email = email
         self.password = password
         self.invite = invite
         self.captcha = captcha
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case email
         case password
         case invite
         case captcha
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(email, forKey: .email)

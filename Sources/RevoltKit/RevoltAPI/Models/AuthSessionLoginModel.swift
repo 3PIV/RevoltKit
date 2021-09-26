@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 public struct AuthSessionLoginModel: Codable, Hashable {
-
+    
     /** Valid email address */
     public var email: String
     /** Password */
@@ -22,7 +22,7 @@ public struct AuthSessionLoginModel: Codable, Hashable {
     public var friendlyName: String?
     /** Captcha verification code */
     public var captcha: String?
-
+    
     public init(email: String, password: String? = nil, challenge: String? = nil, friendlyName: String? = nil, captcha: String? = nil) {
         self.email = email
         self.password = password
@@ -30,7 +30,7 @@ public struct AuthSessionLoginModel: Codable, Hashable {
         self.friendlyName = friendlyName
         self.captcha = captcha
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case email
         case password
@@ -38,9 +38,9 @@ public struct AuthSessionLoginModel: Codable, Hashable {
         case friendlyName = "friendly_name"
         case captcha
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(email, forKey: .email)

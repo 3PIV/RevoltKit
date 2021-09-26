@@ -11,28 +11,28 @@ import AnyCodable
 #endif
 
 public struct ServerMemberResponseModel: Codable, Hashable {
-
+    
     public var id: ServerMemberIDResponseModel
     public var nickname: String?
     public var avatar: AttachmentModel?
     public var roles: [String]?
-
+    
     public init(id: ServerMemberIDResponseModel, nickname: String? = nil, avatar: AttachmentModel? = nil, roles: [String]? = nil) {
         self.id = id
         self.nickname = nickname
         self.avatar = avatar
         self.roles = roles
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id = "_id"
         case nickname
         case avatar
         case roles
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)

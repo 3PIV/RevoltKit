@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 public struct ChannelsMessagingSearchForMessagesModel: Codable, Hashable {
-
+    
     public enum SortModel: String, Codable, CaseIterable {
         case latest = "Latest"
         case oldest = "Oldest"
@@ -29,7 +29,7 @@ public struct ChannelsMessagingSearchForMessagesModel: Codable, Hashable {
     public var sort: SortModel?
     /** Whether to include user (and member, if server channel) objects. */
     public var includeUsers: Bool?
-
+    
     public init(query: String, limit: Double? = nil, before: String? = nil, after: String? = nil, sort: SortModel? = nil, includeUsers: Bool? = nil) {
         self.query = query
         self.limit = limit
@@ -38,7 +38,7 @@ public struct ChannelsMessagingSearchForMessagesModel: Codable, Hashable {
         self.sort = sort
         self.includeUsers = includeUsers
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case query
         case limit
@@ -47,9 +47,9 @@ public struct ChannelsMessagingSearchForMessagesModel: Codable, Hashable {
         case sort
         case includeUsers = "include_users"
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(query, forKey: .query)

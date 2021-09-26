@@ -75,7 +75,7 @@ open class ServerPermissionsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func serversServerPermissionsRolePut(server: ServerIDModel, role: IdModel, inlineObject25Model: ServersServerPermissionsSetRolePermissionModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+    open class func serversServerPermissionsRolePut(server: ServerIDModel, role: RoleIDModel, inlineObject25Model: ServersServerPermissionsSetRolePermissionModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
         serversServerPermissionsRolePutWithRequestBuilder(server: server, role: role, inlineObject25Model: inlineObject25Model).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
@@ -101,7 +101,7 @@ open class ServerPermissionsAPI {
      - parameter inlineObject25Model: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func serversServerPermissionsRolePutWithRequestBuilder(server: ServerIDModel, role: IdModel, setRolePermissionModel: ServersServerPermissionsSetRolePermissionModel? = nil) -> RequestBuilder<Void> {
+    open class func serversServerPermissionsRolePutWithRequestBuilder(server: ServerIDModel, role: RoleIDModel, setRolePermissionModel: ServersServerPermissionsSetRolePermissionModel? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/servers/:server/permissions/:role"
         let serverPreEscape = "\(APIHelper.mapValueToPathItem(server))"
         let serverPostEscape = serverPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -187,7 +187,7 @@ open class ServerPermissionsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func serversServerRolesRoleDelete(server: ServerIDModel, role: IdModel, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+    open class func serversServerRolesRoleDelete(server: ServerIDModel, role: RoleIDModel, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
         serversServerRolesRoleDeleteWithRequestBuilder(server: server, role: role).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
@@ -212,7 +212,7 @@ open class ServerPermissionsAPI {
      - parameter role: (path) Role ID 
      - returns: RequestBuilder<Void> 
      */
-    open class func serversServerRolesRoleDeleteWithRequestBuilder(server: ServerIDModel, role: IdModel) -> RequestBuilder<Void> {
+    open class func serversServerRolesRoleDeleteWithRequestBuilder(server: ServerIDModel, role: RoleIDModel) -> RequestBuilder<Void> {
         var localVariablePath = "/servers/:server/roles/:role"
         let serverPreEscape = "\(APIHelper.mapValueToPathItem(server))"
         let serverPostEscape = serverPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -245,7 +245,7 @@ open class ServerPermissionsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func serversServerRolesRolePatch(server: ServerIDModel, role: IdModel, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+    open class func serversServerRolesRolePatch(server: ServerIDModel, role: RoleIDModel, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
         serversServerRolesRolePatchWithRequestBuilder(server: server, role: role, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
@@ -271,7 +271,7 @@ open class ServerPermissionsAPI {
      - parameter UNKNOWN_BASE_TYPE: (body) Requested changes to role object. (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func serversServerRolesRolePatchWithRequestBuilder(server: ServerIDModel, role: IdModel, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil) -> RequestBuilder<Void> {
+    open class func serversServerRolesRolePatchWithRequestBuilder(server: ServerIDModel, role: RoleIDModel, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/servers/:server/roles/:role"
         let serverPreEscape = "\(APIHelper.mapValueToPathItem(server))"
         let serverPostEscape = serverPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

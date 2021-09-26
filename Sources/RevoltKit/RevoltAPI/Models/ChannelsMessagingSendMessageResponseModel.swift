@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 public struct ChannelsMessagingSendMessageResponseModel: Codable, Hashable {
-
+    
     /** Message Id */
     public var id: String
     /** Nonce value, prefer to use ULIDs here for better feature support.  Used to prevent double requests to create objects. */
@@ -21,18 +21,84 @@ public struct ChannelsMessagingSendMessageResponseModel: Codable, Hashable {
     /** Author Id */
     public var author: String
     /** Message content, can be an object *only* if sent by the system user. */
-    public var content: AnyOfobjectobjectobjectobjectobjectobjectobjectobjectobjectobjectstringModel
+    public struct MessageContentResponseModel: Codable, Hashable {
+        public var id: String?
+        public var by: String?
+        public var name: String?
+        public var content: String?
+        public var string: String?
+        public enum MessageContentTypeModel: String, Codable, CaseIterable {
+            case text
+            case userAdded = "user_added"
+            case userRemove = "user_remove"
+            case userJoined = "user_joined"
+            case userLeft = "user_left"
+            case userKicked = "user_kicked"
+            case userBanned = "user_banned"
+            case channelRenamed = "channel_renamed"
+            case channelDescriptionChanged = "channel_description_changed"
+            case channelIconChanged = "channel_icon_changed"
+        }
+        public var type: MessageContentTypeModel
+    }
+    public var content: MessageContentResponseModel
     /** Message attachments */
     public var attachments: [AttachmentModel]?
     public var edited: ChannelsMessagingFetchMessageEditedResponseModel?
+    
+    public struct MessageEmbedResponseModel: Codable, Hashable {
+        public enum MessageEmbedTypeModel: String, Codable, CaseIterable {
+            case none = "None"
+            case website = "Website"
+            case image = "Image"
+        }
+        public var type: MessageEmbedTypeModel
+        
+        public var url: String?
+        
+        public var width: UInt64?
+        
+        public var height: UInt64?
+        
+        public enum MessageEmbedImageSize: String, Codable, CaseIterable {
+            case large = "Large"
+            case preview = "Preview"
+        }
+        public var size: MessageEmbedImageSize?
+        
+        public var title: String?
+        
+        public var description: String?
+        
+        public var siteName: String?
+        
+        public var iconURL: String?
+        
+        public var colour: String?
+        
+        public struct MessageEmbedImageModel: Codable, Hashable {
+            public var url: String
+            public var width: UInt64
+            public var height: UInt64
+            public var size: MessageEmbedImageSize
+        }
+        public var image: MessageEmbedImageModel?
+        
+        public struct MessageEmbedVideoModel: Codable, Hashable {
+            public var url: String
+            public var width: UInt64
+            public var height: UInt64
+        }
+        public var video: MessageEmbedVideoModel?
+    }
     /** Message link embeds */
-    public var embeds: [AnyOfobjectobjectobjectModel]?
+    public var embeds: [MessageEmbedResponseModel]?
     /** Array of user IDs mentioned in message */
     public var mentions: [String]?
     /** Array of message IDs replied to */
     public var replies: [String]?
-
-    public init(id: String, nonce: String? = nil, channel: String, author: String, content: AnyOfobjectobjectobjectobjectobjectobjectobjectobjectobjectobjectstringModel, attachments: [AttachmentModel]? = nil, edited: ChannelsMessagingFetchMessageEditedResponseModel? = nil, embeds: [AnyOfobjectobjectobjectModel]? = nil, mentions: [String]? = nil, replies: [String]? = nil) {
+    
+    public init(id: String, nonce: String? = nil, channel: String, author: String, content:  MessageContentResponseModel, attachments: [AttachmentModel]? = nil, edited: ChannelsMessagingFetchMessageEditedResponseModel? = nil, embeds: [MessageEmbedResponseModel]? = nil, mentions: [String]? = nil, replies: [String]? = nil) {
         self.id = id
         self.nonce = nonce
         self.channel = channel
@@ -44,7 +110,7 @@ public struct ChannelsMessagingSendMessageResponseModel: Codable, Hashable {
         self.mentions = mentions
         self.replies = replies
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id = "_id"
         case nonce
@@ -57,9 +123,9 @@ public struct ChannelsMessagingSendMessageResponseModel: Codable, Hashable {
         case mentions
         case replies
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)

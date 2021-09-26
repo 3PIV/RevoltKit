@@ -12,7 +12,7 @@ import AnyCodable
 
 /** Server icon */
 public struct ServerIconModel: Codable, Hashable {
-
+    
     /** Attachment ID */
     public var id: String
     public var tag: AttachmentTagModel
@@ -24,7 +24,7 @@ public struct ServerIconModel: Codable, Hashable {
     public var metadata: AttachmentMetadataModel
     /** Content type */
     public var contentType: String
-
+    
     public init(id: String, tag: AttachmentTagModel, size: Double, filename: String, metadata: AttachmentMetadataModel, contentType: String) {
         self.id = id
         self.tag = tag
@@ -33,7 +33,7 @@ public struct ServerIconModel: Codable, Hashable {
         self.metadata = metadata
         self.contentType = contentType
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id = "_id"
         case tag
@@ -42,9 +42,9 @@ public struct ServerIconModel: Codable, Hashable {
         case metadata
         case contentType = "content_type"
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)

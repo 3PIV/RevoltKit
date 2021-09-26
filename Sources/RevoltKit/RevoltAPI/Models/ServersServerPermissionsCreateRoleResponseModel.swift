@@ -11,24 +11,24 @@ import AnyCodable
 #endif
 
 public struct ServersServerPermissionsCreateRoleResponseModel: Codable, Hashable {
-
+    
     /** Role ID */
     public var id: String
     /** Tuple consisting of server and channel permissions in that order */
     public var permissions: [UInt64]
-
+    
     public init(id: String, permissions: [UInt64]) {
         self.id = id
         self.permissions = permissions
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case permissions
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)

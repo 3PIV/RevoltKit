@@ -11,20 +11,20 @@ import AnyCodable
 #endif
 
 public struct AuthSessionEditSessionModel: Codable, Hashable {
-
+    
     /** Session Friendly Name */
     public var friendlyName: String
-
+    
     public init(friendlyName: String) {
         self.friendlyName = friendlyName
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case friendlyName = "friendly_name"
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(friendlyName, forKey: .friendlyName)

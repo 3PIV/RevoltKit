@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 public struct ChannelsMessagingFetchMessagesModel: Codable, Hashable {
-
+    
     public enum SortModel: String, Codable, CaseIterable {
         case latest = "Latest"
         case oldest = "Oldest"
@@ -28,7 +28,7 @@ public struct ChannelsMessagingFetchMessagesModel: Codable, Hashable {
     public var nearby: String?
     /** Whether to include user (and member, if server channel) objects. */
     public var includeUsers: Bool?
-
+    
     public init(limit: Double? = nil, before: String? = nil, after: String? = nil, sort: SortModel, nearby: String? = nil, includeUsers: Bool? = nil) {
         self.limit = limit
         self.before = before
@@ -37,7 +37,7 @@ public struct ChannelsMessagingFetchMessagesModel: Codable, Hashable {
         self.nearby = nearby
         self.includeUsers = includeUsers
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case limit
         case before
@@ -46,9 +46,9 @@ public struct ChannelsMessagingFetchMessagesModel: Codable, Hashable {
         case nearby
         case includeUsers = "include_users"
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(limit, forKey: .limit)

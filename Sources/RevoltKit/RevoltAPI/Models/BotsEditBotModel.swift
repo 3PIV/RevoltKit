@@ -11,41 +11,41 @@ import AnyCodable
 #endif
 
 public struct BotsEditBotModel: Codable, Hashable {
-
-    public enum RemoveModel: String, Codable, CaseIterable {
-        case interactionsURL = "InteractionsURL"
-    }
-    /** Bot username */
-    public var name: String?
-    /** Whether the bot can be added by anyone */
-    public var _public: Bool?
-    /** Interactions URL */
-    public var interactionsUrl: String?
-    /** Field to remove from bot object */
-    public var remove: RemoveModel?
-
-    public init(name: String? = nil, _public: Bool? = nil, interactionsUrl: String? = nil, remove: RemoveModel? = nil) {
-        self.name = name
-        self._public = _public
-        self.interactionsUrl = interactionsUrl
-        self.remove = remove
-    }
-
-    public enum CodingKeys: String, CodingKey, CaseIterable {
-        case name
-        case _public = "public"
-        case interactionsUrl = "interactions_url"
-        case remove
-    }
-
-    // Encodable protocol methods
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(_public, forKey: ._public)
-        try container.encodeIfPresent(interactionsUrl, forKey: .interactionsUrl)
-        try container.encodeIfPresent(remove, forKey: .remove)
-    }
+  
+  public enum RemoveModel: String, Codable, CaseIterable {
+    case interactionsURL = "InteractionsURL"
+  }
+  /** Bot username */
+  public var name: String?
+  /** Whether the bot can be added by anyone */
+  public var _public: Bool?
+  /** Interactions URL */
+  public var interactionsUrl: String?
+  /** Field to remove from bot object */
+  public var remove: RemoveModel?
+  
+  public init(name: String? = nil, _public: Bool? = nil, interactionsUrl: String? = nil, remove: RemoveModel? = nil) {
+    self.name = name
+    self._public = _public
+    self.interactionsUrl = interactionsUrl
+    self.remove = remove
+  }
+  
+  public enum CodingKeys: String, CodingKey, CaseIterable {
+    case name
+    case _public = "public"
+    case interactionsUrl = "interactions_url"
+    case remove
+  }
+  
+  // Encodable protocol methods
+  
+  public func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+    try container.encodeIfPresent(name, forKey: .name)
+    try container.encodeIfPresent(_public, forKey: ._public)
+    try container.encodeIfPresent(interactionsUrl, forKey: .interactionsUrl)
+    try container.encodeIfPresent(remove, forKey: .remove)
+  }
 }
 

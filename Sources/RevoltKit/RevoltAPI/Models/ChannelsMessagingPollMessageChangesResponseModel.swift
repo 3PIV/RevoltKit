@@ -11,24 +11,24 @@ import AnyCodable
 #endif
 
 public struct ChannelsMessagingPollMessageChangesResponseModel: Codable, Hashable {
-
+    
     /** Changed message objects. */
     public var changed: [ChannelsMessagingSendMessageResponseModel]
     /** Array of deleted message IDs. */
     public var deleted: [String]
-
+    
     public init(changed: [ChannelsMessagingSendMessageResponseModel], deleted: [String]) {
         self.changed = changed
         self.deleted = deleted
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case changed
         case deleted
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(changed, forKey: .changed)

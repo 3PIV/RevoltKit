@@ -1,14 +1,13 @@
 //
-//  RoleIDModel.swift
+//  MemberIDModel.swift
 //  
 //
-//  Created by Paul Provins on 9/22/21.
+//  Created by Paul Provins on 9/26/21.
 //
 
 import Foundation
 
-public struct RoleIDModel: Codable, Hashable {
-    
+public struct MemberIDModel: Codable, Hashable {
     /** Id */
     public var id: String
     
@@ -17,7 +16,7 @@ public struct RoleIDModel: Codable, Hashable {
     }
     
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id = "role"
+        case id = "member"
     }
     
     // Encodable protocol methods

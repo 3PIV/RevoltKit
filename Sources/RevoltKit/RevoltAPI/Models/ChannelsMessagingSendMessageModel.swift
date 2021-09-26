@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 public struct ChannelsMessagingSendMessageModel: Codable, Hashable {
-
+    
     /** Message content to send. */
     public var content: String
     /** Nonce value, prefer to use ULIDs here for better feature support.  Used to prevent double requests to create objects. */
@@ -20,23 +20,23 @@ public struct ChannelsMessagingSendMessageModel: Codable, Hashable {
     public var attachments: [String]?
     /** Messages to reply to. */
     public var replies: [ChannelsChannelMessagesRepliesModel]?
-
+    
     public init(content: String, nonce: String, attachments: [String]? = nil, replies: [ChannelsChannelMessagesRepliesModel]? = nil) {
         self.content = content
         self.nonce = nonce
         self.attachments = attachments
         self.replies = replies
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case content
         case nonce
         case attachments
         case replies
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(content, forKey: .content)

@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 public struct ServerRolesModel: Codable, Hashable {
-
+    
     /** Role name */
     public var name: String
     /** Tuple consisting of server and channel permissions in that order */
@@ -22,7 +22,7 @@ public struct ServerRolesModel: Codable, Hashable {
     public var hoist: Bool?
     /** Role ranking  A role with a smaller number will have permissions over roles with larger numbers. */
     public var rank: Double?
-
+    
     public init(name: String, permissions: [UInt64], colour: String? = nil, hoist: Bool? = nil, rank: Double? = nil) {
         self.name = name
         self.permissions = permissions
@@ -30,7 +30,7 @@ public struct ServerRolesModel: Codable, Hashable {
         self.hoist = hoist
         self.rank = rank
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case permissions
@@ -38,9 +38,9 @@ public struct ServerRolesModel: Codable, Hashable {
         case hoist
         case rank
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)

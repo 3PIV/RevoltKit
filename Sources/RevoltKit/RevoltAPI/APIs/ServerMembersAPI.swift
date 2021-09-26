@@ -72,7 +72,7 @@ open class ServerMembersAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func serversServerBansMemberDelete(server: ServerIDModel, member: IdModel, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+    open class func serversServerBansMemberDelete(server: ServerIDModel, member: MemberIDModel, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
         serversServerBansMemberDeleteWithRequestBuilder(server: server, member: member).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
@@ -97,7 +97,7 @@ open class ServerMembersAPI {
      - parameter member: (path) Member ID 
      - returns: RequestBuilder<Void> 
      */
-    open class func serversServerBansMemberDeleteWithRequestBuilder(server: ServerIDModel, member: IdModel) -> RequestBuilder<Void> {
+    open class func serversServerBansMemberDeleteWithRequestBuilder(server: ServerIDModel, member: MemberIDModel) -> RequestBuilder<Void> {
         var localVariablePath = "/servers/:server/bans/:member"
         let serverPreEscape = "\(APIHelper.mapValueToPathItem(server))"
         let serverPostEscape = serverPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -130,7 +130,7 @@ open class ServerMembersAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func serversServerBansMemberPut(server: ServerIDModel, member: IdModel, banUserReasonModel: ServersServerMembersBanUserReasonModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+    open class func serversServerBansMemberPut(server: ServerIDModel, member: MemberIDModel, banUserReasonModel: ServersServerMembersBanUserReasonModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
         serversServerBansMemberPutWithRequestBuilder(server: server, member: member, inlineObject24Model: banUserReasonModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
@@ -156,7 +156,7 @@ open class ServerMembersAPI {
      - parameter inlineObject24Model: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func serversServerBansMemberPutWithRequestBuilder(server: ServerIDModel, member: IdModel, banUserReasonModel: ServersServerMembersBanUserReasonModel? = nil) -> RequestBuilder<Void> {
+    open class func serversServerBansMemberPutWithRequestBuilder(server: ServerIDModel, member: MemberIDModel, banUserReasonModel: ServersServerMembersBanUserReasonModel? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/servers/:server/bans/:member"
         let serverPreEscape = "\(APIHelper.mapValueToPathItem(server))"
         let serverPostEscape = serverPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -281,7 +281,7 @@ open class ServerMembersAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func serversServerMembersMemberGet(server: ServerIDModel, member: IdModel, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: MemberModel?, _ error: Error?) -> Void)) {
+    open class func serversServerMembersMemberGet(server: ServerIDModel, member: MemberIDModel, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: MemberModel?, _ error: Error?) -> Void)) {
         serversServerMembersMemberGetWithRequestBuilder(server: server, member: member).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -306,7 +306,7 @@ open class ServerMembersAPI {
      - parameter member: (path) Member ID 
      - returns: RequestBuilder<MemberModel> 
      */
-    open class func serversServerMembersMemberGetWithRequestBuilder(server: ServerIDModel, member: IdModel) -> RequestBuilder<MemberModel> {
+    open class func serversServerMembersMemberGetWithRequestBuilder(server: ServerIDModel, member: MemberIDModel) -> RequestBuilder<MemberModel> {
         var localVariablePath = "/servers/:server/members/:member"
         let serverPreEscape = "\(APIHelper.mapValueToPathItem(server))"
         let serverPostEscape = serverPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

@@ -8,8 +8,8 @@
 import Foundation
 
 public enum UserPresenceModel: String, Codable, CaseIterable {
-  case busy = "Busy"
-  case idle = "Idle"
-  case invisible = "Invisible"
-  case online = "Online"
+    case busy = "Busy"
+    case idle = "Idle"
+    case invisible = "Invisible"
+    case online = "Online"
 }

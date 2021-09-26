@@ -11,27 +11,27 @@ import AnyCodable
 #endif
 
 public struct UserModel: Codable, Hashable {
-
+    
     /** Id */
     public var id: String
     /** Username */
     public var username: String
     public var avatar: AttachmentModel?
-
+    
     public init(id: String, username: String, avatar: AttachmentModel? = nil) {
         self.id = id
         self.username = username
         self.avatar = avatar
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id = "_id"
         case username
         case avatar
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
@@ -41,20 +41,20 @@ public struct UserModel: Codable, Hashable {
 }
 
 public struct UserIDModel: Codable, Hashable {
-
+    
     /** Id */
     public var user: String
-
-  public init(user: String) {
+    
+    public init(user: String) {
         self.user = user
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case user
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(user, forKey: .user)
@@ -62,22 +62,22 @@ public struct UserIDModel: Codable, Hashable {
 }
 
 public struct UserUsernameModel: Codable, Hashable {
-
+    
     /** Id */
     public var username: String
-/**
-  public init(username: String) {
-        self.username = username
-    }
-
-    public enum CodingKeys: String, CodingKey, CaseIterable {
-        case username
-    }
-
-    // Encodable protocol methods
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(username, forKey: .username)
-    }**/
+    /**
+     public init(username: String) {
+     self.username = username
+     }
+     
+     public enum CodingKeys: String, CodingKey, CaseIterable {
+     case username
+     }
+     
+     // Encodable protocol methods
+     
+     public func encode(to encoder: Encoder) throws {
+     var container = encoder.container(keyedBy: CodingKeys.self)
+     try container.encode(username, forKey: .username)
+     }**/
 }

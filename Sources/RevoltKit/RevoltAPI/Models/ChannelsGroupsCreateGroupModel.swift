@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 public struct ChannelsGroupsCreateGroupModel: Codable, Hashable {
-
+    
     /** Group name */
     public var name: String
     /** Group description */
@@ -22,7 +22,7 @@ public struct ChannelsGroupsCreateGroupModel: Codable, Hashable {
     public var users: [String]?
     /** Whether this group is not safe for work */
     public var nsfw: Bool?
-
+    
     public init(name: String, description: String? = nil, nonce: String, users: [String]? = nil, nsfw: Bool? = nil) {
         self.name = name
         self.description = description
@@ -30,7 +30,7 @@ public struct ChannelsGroupsCreateGroupModel: Codable, Hashable {
         self.users = users
         self.nsfw = nsfw
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case description
@@ -38,9 +38,9 @@ public struct ChannelsGroupsCreateGroupModel: Codable, Hashable {
         case users
         case nsfw
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)

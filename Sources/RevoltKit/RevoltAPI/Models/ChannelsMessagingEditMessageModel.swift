@@ -11,20 +11,20 @@ import AnyCodable
 #endif
 
 public struct ChannelsMessagingEditMessageModel: Codable, Hashable {
-
+    
     /** Message content */
     public var content: String
-
+    
     public init(content: String) {
         self.content = content
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case content
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(content, forKey: .content)

@@ -8,7 +8,7 @@
 import Foundation
 
 public struct ServerIDModel: Codable, Hashable {
-
+    
     /** server ID * */
     public var server: String
 }

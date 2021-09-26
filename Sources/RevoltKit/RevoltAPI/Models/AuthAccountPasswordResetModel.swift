@@ -11,24 +11,24 @@ import AnyCodable
 #endif
 
 public struct AuthAccountPasswordResetModel: Codable, Hashable {
-
+    
     /** Password */
     public var password: String
     /** Password reset token */
     public var token: String
-
+    
     public init(password: String, token: String) {
         self.password = password
         self.token = token
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case password
         case token
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(password, forKey: .password)

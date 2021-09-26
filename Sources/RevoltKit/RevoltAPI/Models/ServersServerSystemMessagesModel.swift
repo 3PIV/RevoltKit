@@ -12,7 +12,7 @@ import AnyCodable
 
 /** System message channels */
 public struct ServersServerSystemMessagesModel: Codable, Hashable {
-
+    
     /** Channel ID where user join events should be sent */
     public var userJoined: String?
     /** Channel ID where user leave events should be sent */
@@ -21,23 +21,23 @@ public struct ServersServerSystemMessagesModel: Codable, Hashable {
     public var userKicked: String?
     /** Channel ID where user ban events should be sent */
     public var userBanned: String?
-
+    
     public init(userJoined: String? = nil, userLeft: String? = nil, userKicked: String? = nil, userBanned: String? = nil) {
         self.userJoined = userJoined
         self.userLeft = userLeft
         self.userKicked = userKicked
         self.userBanned = userBanned
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case userJoined = "user_joined"
         case userLeft = "user_left"
         case userKicked = "user_kicked"
         case userBanned = "user_banned"
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(userJoined, forKey: .userJoined)

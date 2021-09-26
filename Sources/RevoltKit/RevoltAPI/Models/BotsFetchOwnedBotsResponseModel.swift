@@ -11,22 +11,22 @@ import AnyCodable
 #endif
 
 public struct BotsFetchOwnedBotsResponseModel: Codable, Hashable {
-
+    
     public var bots: [BotModel]
     public var users: [UserModel]
-
+    
     public init(bots: [BotModel], users: [UserModel]) {
         self.bots = bots
         self.users = users
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case bots
         case users
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(bots, forKey: .bots)

@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 public struct ChannelsChannelInformationEditChannelModel: Codable, Hashable {
-
+    
     public enum RemoveModel: String, Codable, CaseIterable {
         case description = "Description"
         case icon = "Icon"
@@ -26,7 +26,7 @@ public struct ChannelsChannelInformationEditChannelModel: Codable, Hashable {
     public var nsfw: Bool?
     /** Field to remove from channel object */
     public var remove: RemoveModel?
-
+    
     public init(name: String? = nil, description: String? = nil, icon: String? = nil, nsfw: Bool? = nil, remove: RemoveModel? = nil) {
         self.name = name
         self.description = description
@@ -34,7 +34,7 @@ public struct ChannelsChannelInformationEditChannelModel: Codable, Hashable {
         self.nsfw = nsfw
         self.remove = remove
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case description
@@ -42,9 +42,9 @@ public struct ChannelsChannelInformationEditChannelModel: Codable, Hashable {
         case nsfw
         case remove
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(name, forKey: .name)

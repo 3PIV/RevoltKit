@@ -199,7 +199,7 @@ open class SessionAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func authSessionSessionDelete(session: IdModel, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+    open class func authSessionSessionDelete(session: SessionIDModel, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
         authSessionSessionDeleteWithRequestBuilder(session: session).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
@@ -220,7 +220,7 @@ open class SessionAPI {
      - parameter session: (path) Session ID 
      - returns: RequestBuilder<Void> 
      */
-    open class func authSessionSessionDeleteWithRequestBuilder(session: IdModel) -> RequestBuilder<Void> {
+    open class func authSessionSessionDeleteWithRequestBuilder(session: SessionIDModel) -> RequestBuilder<Void> {
         var localVariablePath = "/auth/session/:session"
         let sessionPreEscape = "\(APIHelper.mapValueToPathItem(session))"
         let sessionPostEscape = sessionPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -249,7 +249,7 @@ open class SessionAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func authSessionSessionPatch(session: IdModel, editSessionModel: AuthSessionEditSessionModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+    open class func authSessionSessionPatch(session: SessionIDModel, editSessionModel: AuthSessionEditSessionModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
         authSessionSessionPatchWithRequestBuilder(session: session, inlineObject8Model: editSessionModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
@@ -271,7 +271,7 @@ open class SessionAPI {
      - parameter inlineObject8Model: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func authSessionSessionPatchWithRequestBuilder(session: IdModel, editSessionModel: AuthSessionEditSessionModel? = nil) -> RequestBuilder<Void> {
+    open class func authSessionSessionPatchWithRequestBuilder(session: SessionIDModel, editSessionModel: AuthSessionEditSessionModel? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/auth/session/:session"
         let sessionPreEscape = "\(APIHelper.mapValueToPathItem(session))"
         let sessionPostEscape = sessionPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

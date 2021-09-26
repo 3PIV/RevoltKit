@@ -11,7 +11,7 @@ import AnyCodable
 #endif
 
 public struct ServersServerMembersEditMemberModel: Codable, Hashable {
-
+    
     public enum RemoveModel: String, Codable, CaseIterable {
         case avatar = "Avatar"
         case nickname = "Nickname"
@@ -24,23 +24,23 @@ public struct ServersServerMembersEditMemberModel: Codable, Hashable {
     public var roles: [String]?
     /** Field to remove from channel object */
     public var remove: RemoveModel?
-
+    
     public init(nickname: String? = nil, avatar: String? = nil, roles: [String]? = nil, remove: RemoveModel? = nil) {
         self.nickname = nickname
         self.avatar = avatar
         self.roles = roles
         self.remove = remove
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case nickname
         case avatar
         case roles
         case remove
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(nickname, forKey: .nickname)

@@ -11,26 +11,26 @@ import AnyCodable
 #endif
 
 public struct ServerCategoriesModel: Codable, Hashable {
-
+    
     /** Id */
     public var id: String
     public var title: String
     public var channels: [String]
-
+    
     public init(id: String, title: String, channels: [String]) {
         self.id = id
         self.title = title
         self.channels = channels
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case title
         case channels
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)

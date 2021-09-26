@@ -19,7 +19,7 @@ open class BotsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func botsBotDelete(bot: IdModel, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+    open class func botsBotDelete(bot: BotIDModel, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
         botsBotDeleteWithRequestBuilder(bot: bot).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
@@ -40,7 +40,7 @@ open class BotsAPI {
      - parameter bot: (path) Bot ID 
      - returns: RequestBuilder<Void> 
      */
-    open class func botsBotDeleteWithRequestBuilder(bot: IdModel) -> RequestBuilder<Void> {
+    open class func botsBotDeleteWithRequestBuilder(bot: BotIDModel) -> RequestBuilder<Void> {
         var localVariablePath = "/bots/:bot"
         let botPreEscape = "\(APIHelper.mapValueToPathItem(bot))"
         let botPostEscape = botPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -68,7 +68,7 @@ open class BotsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func botsBotGet(bot: IdModel, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: BotsFetchBotResponseModel?, _ error: Error?) -> Void)) {
+    open class func botsBotGet(bot: BotIDModel, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: BotsFetchBotResponseModel?, _ error: Error?) -> Void)) {
         botsBotGetWithRequestBuilder(bot: bot).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -89,7 +89,7 @@ open class BotsAPI {
      - parameter bot: (path) Bot ID 
      - returns: RequestBuilder<InlineResponse2008Model> 
      */
-    open class func botsBotGetWithRequestBuilder(bot: IdModel) -> RequestBuilder<BotsFetchBotResponseModel> {
+    open class func botsBotGetWithRequestBuilder(bot: BotIDModel) -> RequestBuilder<BotsFetchBotResponseModel> {
         var localVariablePath = "/bots/:bot"
         let botPreEscape = "\(APIHelper.mapValueToPathItem(bot))"
         let botPostEscape = botPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -117,7 +117,7 @@ open class BotsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func botsBotInviteGet(bot: IdModel, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: PublicBotModel?, _ error: Error?) -> Void)) {
+    open class func botsBotInviteGet(bot: BotIDModel, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: PublicBotModel?, _ error: Error?) -> Void)) {
         botsBotInviteGetWithRequestBuilder(bot: bot).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -138,7 +138,7 @@ open class BotsAPI {
      - parameter bot: (path) Bot ID 
      - returns: RequestBuilder<PublicBotModel> 
      */
-    open class func botsBotInviteGetWithRequestBuilder(bot: IdModel) -> RequestBuilder<PublicBotModel> {
+    open class func botsBotInviteGetWithRequestBuilder(bot: BotIDModel) -> RequestBuilder<PublicBotModel> {
         var localVariablePath = "/bots/:bot/invite"
         let botPreEscape = "\(APIHelper.mapValueToPathItem(bot))"
         let botPostEscape = botPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -167,7 +167,7 @@ open class BotsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func botsBotInvitePost(bot: IdModel, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+    open class func botsBotInvitePost(bot: BotIDModel, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
         botsBotInvitePostWithRequestBuilder(bot: bot, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
@@ -189,7 +189,7 @@ open class BotsAPI {
      - parameter UNKNOWN_BASE_TYPE: (body) Information about where to invite the bot. (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func botsBotInvitePostWithRequestBuilder(bot: IdModel, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil) -> RequestBuilder<Void> {
+    open class func botsBotInvitePostWithRequestBuilder(bot: BotIDModel, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/bots/:bot/invite"
         let botPreEscape = "\(APIHelper.mapValueToPathItem(bot))"
         let botPostEscape = botPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

@@ -11,28 +11,28 @@ import AnyCodable
 #endif
 
 public struct InvitesJoinInviteResponseModel: Codable, Hashable {
-
+    
     public enum TypeModel: String, Codable, CaseIterable {
         case server = "Server"
     }
     public var type: TypeModel
     public var channel: ChannelJoinInviteResponseModel
     public var server: ServerModel
-
+    
     public init(type: TypeModel, channel: ChannelJoinInviteResponseModel, server: ServerModel) {
         self.type = type
         self.channel = channel
         self.server = server
     }
-
+    
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case type
         case channel
         case server
     }
-
+    
     // Encodable protocol methods
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(type, forKey: .type)

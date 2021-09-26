@@ -8,9 +8,9 @@
 import Foundation
 
 public enum AttachmentTagModel: String, Codable, CaseIterable {
-  case attachments = "attachments"
-  case avatars = "avatars"
-  case backgrounds = "backgrounds"
-  case banners = "banners"
-  case icons = "icons"
+    case attachments = "attachments"
+    case avatars = "avatars"
+    case backgrounds = "backgrounds"
+    case banners = "banners"
+    case icons = "icons"
 }
