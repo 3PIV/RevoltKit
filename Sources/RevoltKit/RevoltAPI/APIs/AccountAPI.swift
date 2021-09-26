@@ -327,7 +327,7 @@ open class AccountAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func authAccountVerifyCodePost(code: IdModel, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+    open class func authAccountVerifyCodePost(code: CodeIDModel, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
         authAccountVerifyCodePostWithRequestBuilder(code: code).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
@@ -345,7 +345,7 @@ open class AccountAPI {
      - parameter code: (path) Verification Code 
      - returns: RequestBuilder<Void> 
      */
-    open class func authAccountVerifyCodePostWithRequestBuilder(code: IdModel) -> RequestBuilder<Void> {
+    open class func authAccountVerifyCodePostWithRequestBuilder(code: CodeIDModel) -> RequestBuilder<Void> {
         var localVariablePath = "/auth/account/verify/:code"
         let codePreEscape = "\(APIHelper.mapValueToPathItem(code))"
         let codePostEscape = codePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

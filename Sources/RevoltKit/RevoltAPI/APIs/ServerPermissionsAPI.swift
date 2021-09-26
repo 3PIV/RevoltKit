@@ -241,12 +241,12 @@ open class ServerPermissionsAPI {
      
      - parameter server: (path) Server ID 
      - parameter role: (path) Role ID 
-     - parameter UNKNOWN_BASE_TYPE: (body) Requested changes to role object. (optional)
+     - parameter edits: (body) Requested changes to role object. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func serversServerRolesRolePatch(server: ServerIDModel, role: RoleIDModel, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
-        serversServerRolesRolePatchWithRequestBuilder(server: server, role: role, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE).execute(apiResponseQueue) { result -> Void in
+    open class func serversServerRolesRolePatch(server: ServerIDModel, role: RoleIDModel, edits: RoleEditModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+        serversServerRolesRolePatchWithRequestBuilder(server: server, role: role, edits: edits).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
                 completion((), nil)
@@ -268,10 +268,10 @@ open class ServerPermissionsAPI {
        - name: Session Token
      - parameter server: (path) Server ID 
      - parameter role: (path) Role ID 
-     - parameter UNKNOWN_BASE_TYPE: (body) Requested changes to role object. (optional)
+     - parameter edits: (body) Requested changes to role object. (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func serversServerRolesRolePatchWithRequestBuilder(server: ServerIDModel, role: RoleIDModel, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil) -> RequestBuilder<Void> {
+    open class func serversServerRolesRolePatchWithRequestBuilder(server: ServerIDModel, role: RoleIDModel, edits: RoleEditModel? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/servers/:server/roles/:role"
         let serverPreEscape = "\(APIHelper.mapValueToPathItem(server))"
         let serverPostEscape = serverPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -280,7 +280,7 @@ open class ServerPermissionsAPI {
         let rolePostEscape = rolePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{role}", with: rolePostEscape, options: .literal, range: nil)
         let localVariableURLString = RevoltAPIClient.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: UNKNOWN_BASE_TYPE)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: edits)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 

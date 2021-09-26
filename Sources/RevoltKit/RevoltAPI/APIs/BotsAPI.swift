@@ -117,7 +117,7 @@ open class BotsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func botsBotInviteGet(bot: BotIDModel, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: PublicBotModel?, _ error: Error?) -> Void)) {
+    open class func botsBotInviteGet(bot: BotIDModel, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: BotModel?, _ error: Error?) -> Void)) {
         botsBotInviteGetWithRequestBuilder(bot: bot).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -136,9 +136,9 @@ open class BotsAPI {
        - type: apiKey x-session-token 
        - name: Session Token
      - parameter bot: (path) Bot ID 
-     - returns: RequestBuilder<PublicBotModel> 
+     - returns: RequestBuilder<BotModel>
      */
-    open class func botsBotInviteGetWithRequestBuilder(bot: BotIDModel) -> RequestBuilder<PublicBotModel> {
+    open class func botsBotInviteGetWithRequestBuilder(bot: BotIDModel) -> RequestBuilder<BotModel> {
         var localVariablePath = "/bots/:bot/invite"
         let botPreEscape = "\(APIHelper.mapValueToPathItem(bot))"
         let botPostEscape = botPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -154,7 +154,7 @@ open class BotsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<PublicBotModel>.Type = RevoltAPIClient.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<BotModel>.Type = RevoltAPIClient.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -163,12 +163,12 @@ open class BotsAPI {
      Invite Public Bot
      
      - parameter bot: (path) Bot ID 
-     - parameter UNKNOWN_BASE_TYPE: (body) Information about where to invite the bot. (optional)
+     - parameter location: (body) Information about where to invite the bot. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func botsBotInvitePost(bot: BotIDModel, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
-        botsBotInvitePostWithRequestBuilder(bot: bot, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE).execute(apiResponseQueue) { result -> Void in
+    open class func botsBotInvitePost(bot: BotIDModel, location: BotInviteLocationModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+        botsBotInvitePostWithRequestBuilder(bot: bot, location: location).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
                 completion((), nil)
@@ -186,16 +186,16 @@ open class BotsAPI {
        - type: apiKey x-session-token 
        - name: Session Token
      - parameter bot: (path) Bot ID 
-     - parameter UNKNOWN_BASE_TYPE: (body) Information about where to invite the bot. (optional)
+     - parameter location: (body) Information about where to invite the bot. (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func botsBotInvitePostWithRequestBuilder(bot: BotIDModel, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil) -> RequestBuilder<Void> {
+    open class func botsBotInvitePostWithRequestBuilder(bot: BotIDModel, location: BotInviteLocationModel? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/bots/:bot/invite"
         let botPreEscape = "\(APIHelper.mapValueToPathItem(bot))"
         let botPostEscape = botPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{bot}", with: botPostEscape, options: .literal, range: nil)
         let localVariableURLString = RevoltAPIClient.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: UNKNOWN_BASE_TYPE)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: location)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
