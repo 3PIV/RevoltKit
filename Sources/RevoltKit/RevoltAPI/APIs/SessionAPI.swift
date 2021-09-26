@@ -108,12 +108,12 @@ open class SessionAPI {
     /**
      Login
      
-     - parameter inlineObject7Model: (body)  (optional)
+     - parameter sessionLoginModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     open class func authSessionLoginPost(sessionLoginModel: AuthSessionLoginModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: SessionModel?, _ error: Error?) -> Void)) {
-        authSessionLoginPostWithRequestBuilder(inlineObject7Model: sessionLoginModel).execute(apiResponseQueue) { result -> Void in
+        authSessionLoginPostWithRequestBuilder(sessionLoginModel: sessionLoginModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -127,7 +127,7 @@ open class SessionAPI {
      Login
      - POST /auth/session/login
      - Login to an account.
-     - parameter inlineObject7Model: (body)  (optional)
+     - parameter sessionLoginModel: (body)  (optional)
      - returns: RequestBuilder<SessionModel> 
      */
     open class func authSessionLoginPostWithRequestBuilder(sessionLoginModel: AuthSessionLoginModel? = nil) -> RequestBuilder<SessionModel> {
@@ -245,12 +245,12 @@ open class SessionAPI {
      Edit Session
      
      - parameter session: (path) Session ID 
-     - parameter inlineObject8Model: (body)  (optional)
+     - parameter editSessionModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     open class func authSessionSessionPatch(session: SessionIDModel, editSessionModel: AuthSessionEditSessionModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
-        authSessionSessionPatchWithRequestBuilder(session: session, inlineObject8Model: editSessionModel).execute(apiResponseQueue) { result -> Void in
+        authSessionSessionPatchWithRequestBuilder(session: session, editSessionModel: editSessionModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
                 completion((), nil)
@@ -268,7 +268,7 @@ open class SessionAPI {
        - type: apiKey x-session-token 
        - name: Session Token
      - parameter session: (path) Session ID 
-     - parameter inlineObject8Model: (body)  (optional)
+     - parameter editSessionModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func authSessionSessionPatchWithRequestBuilder(session: SessionIDModel, editSessionModel: AuthSessionEditSessionModel? = nil) -> RequestBuilder<Void> {

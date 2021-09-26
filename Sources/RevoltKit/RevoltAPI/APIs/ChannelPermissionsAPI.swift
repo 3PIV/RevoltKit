@@ -76,7 +76,7 @@ open class ChannelPermissionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     open class func channelsChannelPermissionsRolePut(channel: ChannelIDModel, role: RoleIDModel, setRolePermissionModel: ChannelsChannelPermissionSetRolePermissionModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
-        channelsChannelPermissionsRolePutWithRequestBuilder(channel: channel, role: role, inlineObject12Model: setRolePermissionModel).execute(apiResponseQueue) { result -> Void in
+        channelsChannelPermissionsRolePutWithRequestBuilder(channel: channel, role: role, setRolePermissionModel: setRolePermissionModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
                 completion((), nil)

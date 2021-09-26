@@ -8,7 +8,6 @@
 import Foundation
 #if canImport(AnyCodable)
 import AnyCodable
-import AnyDecodable
 #endif
 
 public struct WebPushSubscriptionModel: Codable, Hashable {

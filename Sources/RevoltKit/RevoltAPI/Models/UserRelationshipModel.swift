@@ -17,7 +17,7 @@ public enum UserRelationshipType: String, Codable, CaseIterable {
     case user = "User"
 }
 
-public struct UserRelationshipModel {
+public struct UserRelationshipModel: Codable, Hashable {
     
     public var type: UserRelationshipType
     public var id: String
@@ -41,7 +41,7 @@ public struct UserRelationshipModel {
     }
 }
 
-public struct UserNoIDRelationshipModel {
+public struct UserNoIDRelationshipModel: Codable, Hashable {
     public var type: UserRelationshipType
     
     public init(type: UserRelationshipType, id: String) {

@@ -38,7 +38,7 @@ open class RelationshipsAPI {
        - name: Session Token
      - returns: RequestBuilder<[AnyCodableModel]> 
      */
-    open class func usersRelationshipsGetWithRequestBuilder() -> RequestBuilder<[AnyCodableModel]> {
+    open class func usersRelationshipsGetWithRequestBuilder() -> RequestBuilder<[UserRelationshipModel]> {
         let localVariablePath = "/users/relationships"
         let localVariableURLString = RevoltAPIClient.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -51,7 +51,7 @@ open class RelationshipsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[AnyCodableModel]>.Type = RevoltAPIClient.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[UserRelationshipModel]>.Type = RevoltAPIClient.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -182,7 +182,7 @@ open class RelationshipsAPI {
      - parameter user: (path) User ID 
      - returns: RequestBuilder<RUserRelationshipType>
      */
-    open class func usersUserRelationshipGetWithRequestBuilder(user: UserIDModel) -> RequestBuilder<UserRelationshipType> {
+    open class func usersUserRelationshipGetWithRequestBuilder(user: UserIDModel) -> RequestBuilder<UserNoIDRelationshipModel> {
         var localVariablePath = "/users/:user/relationship"
         let userPreEscape = "\(APIHelper.mapValueToPathItem(user))"
         let userPostEscape = userPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -198,7 +198,7 @@ open class RelationshipsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<UserRelationshipType>.Type = RevoltAPIClient.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<UserNoIDRelationshipModel>.Type = RevoltAPIClient.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

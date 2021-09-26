@@ -15,12 +15,12 @@ open class UserInformationAPI {
     /**
      Edit User
      
-     - parameter inlineObject9Model: (body)  (optional)
+     - parameter editUserModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func usersMePatch(inlineObject9Model: UsersUserInformationEditUserModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
-        usersMePatchWithRequestBuilder(editUserModel: inlineObject9Model).execute(apiResponseQueue) { result -> Void in
+    open class func usersMePatch(editUserModel: UsersUserInformationEditUserModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+        usersMePatchWithRequestBuilder(editUserModel: editUserModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
                 completion((), nil)
@@ -40,7 +40,7 @@ open class UserInformationAPI {
      - API Key:
        - type: apiKey x-session-token 
        - name: Session Token
-     - parameter inlineObject9Model: (body)  (optional)
+     - parameter editUserModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func usersMePatchWithRequestBuilder(editUserModel: UsersUserInformationEditUserModel? = nil) -> RequestBuilder<Void> {
@@ -64,7 +64,7 @@ open class UserInformationAPI {
     /**
      Change Username
      
-     - parameter inlineObject10Model: (body)  (optional)
+     - parameter changeUsernameModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -86,7 +86,7 @@ open class UserInformationAPI {
      - API Key:
        - type: apiKey x-session-token 
        - name: Session Token
-     - parameter inlineObject10Model: (body)  (optional)
+     - parameter changeUsernameModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func usersMeUsernamePatchWithRequestBuilder(changeUsernameModel: UsersUserInformationChangeUsernameModel? = nil) -> RequestBuilder<Void> {

@@ -15,7 +15,7 @@ open class AccountAPI {
     /**
      Change Email
      
-     - parameter inlineObject6Model: (body)  (optional)
+     - parameter changeEmailModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -37,7 +37,7 @@ open class AccountAPI {
      - API Key:
        - type: apiKey x-session-token 
        - name: Session Token
-     - parameter inlineObject6Model: (body)  (optional)
+     - parameter changeEmailModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func authAccountChangeEmailPatchWithRequestBuilder(changeEmailModel: AuthAccountChangeEmailModel? = nil) -> RequestBuilder<Void> {
@@ -61,7 +61,7 @@ open class AccountAPI {
     /**
      Change Password
      
-     - parameter inlineObject5Model: (body)  (optional)
+     - parameter changePasswordModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -83,7 +83,7 @@ open class AccountAPI {
      - API Key:
        - type: apiKey x-session-token 
        - name: Session Token
-     - parameter inlineObject5Model: (body)  (optional)
+     - parameter changePasswordModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func authAccountChangePasswordPatchWithRequestBuilder(changePasswordModel: AuthAccountChangePasswordModel? = nil) -> RequestBuilder<Void> {
@@ -107,7 +107,7 @@ open class AccountAPI {
     /**
      Create Account
      
-     - parameter inlineObject1Model: (body)  (optional)
+     - parameter createAccountModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -126,7 +126,7 @@ open class AccountAPI {
      Create Account
      - POST /auth/account/create
      - Create a new account.
-     - parameter inlineObject1Model: (body)  (optional)
+     - parameter createAccountModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func authAccountCreatePostWithRequestBuilder(createAccountModel: AuthAccountCreateAccountModel? = nil) -> RequestBuilder<Void> {
@@ -194,7 +194,7 @@ open class AccountAPI {
     /**
      Password Reset
      
-     - parameter inlineObject4Model: (body)  (optional)
+     - parameter passwordResetModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -213,7 +213,7 @@ open class AccountAPI {
      Password Reset
      - PATCH /auth/account/reset_password
      - Confirm password reset.
-     - parameter inlineObject4Model: (body)  (optional)
+     - parameter passwordResetModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func authAccountResetPasswordPatchWithRequestBuilder(passwordResetModel: AuthAccountPasswordResetModel? = nil) -> RequestBuilder<Void> {
@@ -237,7 +237,7 @@ open class AccountAPI {
     /**
      Send Password Reset
      
-     - parameter inlineObject3Model: (body)  (optional)
+     - parameter sendPasswordResetModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -256,7 +256,7 @@ open class AccountAPI {
      Send Password Reset
      - POST /auth/account/reset_password
      - Send password reset email.
-     - parameter inlineObject3Model: (body)  (optional)
+     - parameter sendPasswordResetModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func authAccountResetPasswordPostWithRequestBuilder(sendPasswordResetModel: AuthAccountSendPasswordResetModel? = nil) -> RequestBuilder<Void> {
@@ -280,7 +280,7 @@ open class AccountAPI {
     /**
      Resend Verification
      
-     - parameter inlineObject2Model: (body)  (optional)
+     - parameter resendVerificationModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -299,7 +299,7 @@ open class AccountAPI {
      Resend Verification
      - POST /auth/account/reverify
      - Resend account creation verification email.
-     - parameter inlineObject2Model: (body)  (optional)
+     - parameter resendVerificationModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func authAccountReverifyPostWithRequestBuilder(resendVerificationModel: AuthAccountResendVerificationModel? = nil) -> RequestBuilder<Void> {

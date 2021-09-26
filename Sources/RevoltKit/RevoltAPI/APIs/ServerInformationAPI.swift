@@ -15,12 +15,12 @@ open class ServerInformationAPI {
     /**
      Create Server
      
-     - parameter inlineObject21Model: (body)  (optional)
+     - parameter informationCreateServerModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func serversCreatePost(inlineObject21Model: ServersServerInformationCreateServerModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: ServerModel?, _ error: Error?) -> Void)) {
-        serversCreatePostWithRequestBuilder(informationCreateServerModel: inlineObject21Model).execute(apiResponseQueue) { result -> Void in
+    open class func serversCreatePost(informationCreateServerModel: ServersServerInformationCreateServerModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: ServerModel?, _ error: Error?) -> Void)) {
+        serversCreatePostWithRequestBuilder(informationCreateServerModel: informationCreateServerModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -37,7 +37,7 @@ open class ServerInformationAPI {
      - API Key:
        - type: apiKey x-session-token 
        - name: Session Token
-     - parameter inlineObject21Model: (body)  (optional)
+     - parameter informationCreateServerModel: (body)  (optional)
      - returns: RequestBuilder<ServerModel> 
      */
     open class func serversCreatePostWithRequestBuilder(informationCreateServerModel: ServersServerInformationCreateServerModel? = nil) -> RequestBuilder<ServerModel> {
@@ -111,12 +111,12 @@ open class ServerInformationAPI {
      Create Channel
      
      - parameter server: (path) Server ID 
-     - parameter inlineObject22Model: (body)  (optional)
+     - parameter informationCreateChannelModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     open class func serversServerChannelsPost(server: ServerIDModel, informationCreateChannelModel: ServersServerInformationCreateChannelModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
-        serversServerChannelsPostWithRequestBuilder(server: server, inlineObject22Model: informationCreateChannelModel).execute(apiResponseQueue) { result -> Void in
+        serversServerChannelsPostWithRequestBuilder(server: server, informationCreateChannelModel: informationCreateChannelModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
                 completion((), nil)
@@ -137,7 +137,7 @@ open class ServerInformationAPI {
        - type: apiKey x-session-token 
        - name: Session Token
      - parameter server: (path) Server ID 
-     - parameter inlineObject22Model: (body)  (optional)
+     - parameter informationCreateChannelModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func serversServerChannelsPostWithRequestBuilder(server: ServerIDModel, informationCreateChannelModel: ServersServerInformationCreateChannelModel? = nil) -> RequestBuilder<Void> {
@@ -321,12 +321,12 @@ open class ServerInformationAPI {
      Edit Server
      
      - parameter server: (path) Server ID 
-     - parameter inlineObject20Model: (body)  (optional)
+     - parameter informationEditServerModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func serversServerPatch(server: ServerIDModel, inlineObject20Model: ServersServerInformationEditServerModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
-        serversServerPatchWithRequestBuilder(server: server, inlineObject20Model: inlineObject20Model).execute(apiResponseQueue) { result -> Void in
+    open class func serversServerPatch(server: ServerIDModel, informationEditServerModel: ServersServerInformationEditServerModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+        serversServerPatchWithRequestBuilder(server: server, informationEditServerModel: informationEditServerModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
                 completion((), nil)
@@ -347,7 +347,7 @@ open class ServerInformationAPI {
        - type: apiKey x-session-token 
        - name: Session Token
      - parameter server: (path) Server ID 
-     - parameter inlineObject20Model: (body)  (optional)
+     - parameter informationEditServerModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func serversServerPatchWithRequestBuilder(server: ServerIDModel, informationEditServerModel: ServersServerInformationEditServerModel? = nil) -> RequestBuilder<Void> {

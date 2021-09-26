@@ -126,12 +126,12 @@ open class ServerMembersAPI {
      
      - parameter server: (path) Server ID 
      - parameter member: (path) Member ID 
-     - parameter inlineObject24Model: (body)  (optional)
+     - parameter banUserReasonModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     open class func serversServerBansMemberPut(server: ServerIDModel, member: MemberIDModel, banUserReasonModel: ServersServerMembersBanUserReasonModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
-        serversServerBansMemberPutWithRequestBuilder(server: server, member: member, inlineObject24Model: banUserReasonModel).execute(apiResponseQueue) { result -> Void in
+        serversServerBansMemberPutWithRequestBuilder(server: server, member: member, banUserReasonModel: banUserReasonModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
                 completion((), nil)
@@ -153,7 +153,7 @@ open class ServerMembersAPI {
        - name: Session Token
      - parameter server: (path) Server ID 
      - parameter member: (path) Member ID 
-     - parameter inlineObject24Model: (body)  (optional)
+     - parameter banUserReasonModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func serversServerBansMemberPutWithRequestBuilder(server: ServerIDModel, member: MemberIDModel, banUserReasonModel: ServersServerMembersBanUserReasonModel? = nil) -> RequestBuilder<Void> {
@@ -334,12 +334,12 @@ open class ServerMembersAPI {
      Edit Member
      
      - parameter server: (path) Server ID 
-     - parameter inlineObject23Model: (body)  (optional)
+     - parameter membersEditMemberModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func serversServerMembersMemberPatch(server: ServerIDModel, memberEditMemberModel: ServersServerMembersEditMemberModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
-        serversServerMembersMemberPatchWithRequestBuilder(server: server, inlineObject23Model: memberEditMemberModel).execute(apiResponseQueue) { result -> Void in
+    open class func serversServerMembersMemberPatch(server: ServerIDModel, membersEditMemberModel: ServersServerMembersEditMemberModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+        serversServerMembersMemberPatchWithRequestBuilder(server: server, membersEditMemberModel: membersEditMemberModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
                 completion((), nil)
@@ -360,7 +360,7 @@ open class ServerMembersAPI {
        - type: apiKey x-session-token 
        - name: Session Token
      - parameter server: (path) Server ID 
-     - parameter inlineObject23Model: (body)  (optional)
+     - parameter memberEditMemberModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func serversServerMembersMemberPatchWithRequestBuilder(server: ServerIDModel, membersEditMemberModel: ServersServerMembersEditMemberModel? = nil) -> RequestBuilder<Void> {

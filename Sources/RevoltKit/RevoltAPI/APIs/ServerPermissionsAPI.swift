@@ -16,12 +16,12 @@ open class ServerPermissionsAPI {
      Set Default Permission
      
      - parameter server: (path) Server ID 
-     - parameter inlineObject26Model: (body)  (optional)
+     - parameter setDefaultPermissionModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func serversServerPermissionsDefaultPut(server: ServerIDModel, inlineObject26Model: ServersServerPermissionsSetDefaultPermissionModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
-        serversServerPermissionsDefaultPutWithRequestBuilder(server: server, inlineObject26Model: inlineObject26Model).execute(apiResponseQueue) { result -> Void in
+    open class func serversServerPermissionsDefaultPut(server: ServerIDModel, setDefaultPermissionModel: ServersServerPermissionsSetDefaultPermissionModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+        serversServerPermissionsDefaultPutWithRequestBuilder(server: server, setDefaultPermissionModel: setDefaultPermissionModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
                 completion((), nil)
@@ -42,16 +42,16 @@ open class ServerPermissionsAPI {
        - type: apiKey x-session-token 
        - name: Session Token
      - parameter server: (path) Server ID 
-     - parameter inlineObject26Model: (body)  (optional)
+     - parameter setDefaultPermissionModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func serversServerPermissionsDefaultPutWithRequestBuilder(server: ServerIDModel, inlineObject26Model: ServersServerPermissionsSetDefaultPermissionModel? = nil) -> RequestBuilder<Void> {
+    open class func serversServerPermissionsDefaultPutWithRequestBuilder(server: ServerIDModel, setDefaultPermissionModel: ServersServerPermissionsSetDefaultPermissionModel? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/servers/:server/permissions/default"
         let serverPreEscape = "\(APIHelper.mapValueToPathItem(server))"
         let serverPostEscape = serverPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{server}", with: serverPostEscape, options: .literal, range: nil)
         let localVariableURLString = RevoltAPIClient.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: inlineObject26Model)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: setDefaultPermissionModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -71,12 +71,12 @@ open class ServerPermissionsAPI {
      
      - parameter server: (path) Server ID 
      - parameter role: (path) Role ID 
-     - parameter inlineObject25Model: (body)  (optional)
+     - parameter setRolePermissionModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func serversServerPermissionsRolePut(server: ServerIDModel, role: RoleIDModel, inlineObject25Model: ServersServerPermissionsSetRolePermissionModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
-        serversServerPermissionsRolePutWithRequestBuilder(server: server, role: role, inlineObject25Model: inlineObject25Model).execute(apiResponseQueue) { result -> Void in
+    open class func serversServerPermissionsRolePut(server: ServerIDModel, role: RoleIDModel, setRolePermissionModel: ServersServerPermissionsSetRolePermissionModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+        serversServerPermissionsRolePutWithRequestBuilder(server: server, role: role, setRolePermissionModel: setRolePermissionModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
                 completion((), nil)
@@ -98,7 +98,7 @@ open class ServerPermissionsAPI {
        - name: Session Token
      - parameter server: (path) Server ID 
      - parameter role: (path) Role ID 
-     - parameter inlineObject25Model: (body)  (optional)
+     - parameter setRolePermissionModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func serversServerPermissionsRolePutWithRequestBuilder(server: ServerIDModel, role: RoleIDModel, setRolePermissionModel: ServersServerPermissionsSetRolePermissionModel? = nil) -> RequestBuilder<Void> {
@@ -129,12 +129,12 @@ open class ServerPermissionsAPI {
      Create Role
      
      - parameter server: (path) Server ID 
-     - parameter inlineObject27Model: (body)  (optional)
+     - parameter permissionsCreateRoleModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func serversServerRolesPost(server: ServerIDModel, persmissionCreateRoleModel: ServersServerPermissionsCreateRoleModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: ServersServerPermissionsCreateRoleResponseModel?, _ error: Error?) -> Void)) {
-        serversServerRolesPostWithRequestBuilder(server: server, inlineObject27Model: persmissionCreateRoleModel).execute(apiResponseQueue) { result -> Void in
+    open class func serversServerRolesPost(server: ServerIDModel, permissionsCreateRoleModel: ServersServerPermissionsCreateRoleModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: ServersServerPermissionsCreateRoleResponseModel?, _ error: Error?) -> Void)) {
+        serversServerRolesPostWithRequestBuilder(server: server, permissionsCreateRoleModel: permissionsCreateRoleModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -155,7 +155,7 @@ open class ServerPermissionsAPI {
        - type: apiKey x-session-token 
        - name: Session Token
      - parameter server: (path) Server ID 
-     - parameter inlineObject27Model: (body)  (optional)
+     - parameter permissionsCreateRoleModel: (body)  (optional)
      - returns: RequestBuilder<InlineResponse2006Model> 
      */
     open class func serversServerRolesPostWithRequestBuilder(server: ServerIDModel, permissionsCreateRoleModel: ServersServerPermissionsCreateRoleModel? = nil) -> RequestBuilder<ServersServerPermissionsCreateRoleResponseModel> {

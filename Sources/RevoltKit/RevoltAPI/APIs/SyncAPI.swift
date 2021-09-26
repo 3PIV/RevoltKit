@@ -6,21 +6,19 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
 import AnyCodable
-#endif
 
 open class SyncAPI {
 
     /**
      Fetch Settings
      
-     - parameter inlineObject30Model: (body)  (optional)
+     - parameter fetchSettingsModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func syncSettingsFetchPost(fetchSettingsModel: SyncFetchSettingsModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: [String: Array]?, _ error: Error?) -> Void)) {
-        syncSettingsFetchPostWithRequestBuilder(inlineObject30Model: fetchSettingsModel).execute(apiResponseQueue) { result -> Void in
+    open class func syncSettingsFetchPost(fetchSettingsModel: SyncFetchSettingsModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: [String: Array<AnyCodable>]?, _ error: Error?) -> Void)) {
+        syncSettingsFetchPostWithRequestBuilder(fetchSettingsModel: fetchSettingsModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -37,10 +35,10 @@ open class SyncAPI {
      - API Key:
        - type: apiKey x-session-token 
        - name: Session Token
-     - parameter inlineObject30Model: (body)  (optional)
-     - returns: RequestBuilder<[String: Array]> 
+     - parameter fetchSettingsModel: (body)  (optional)
+     - returns: RequestBuilder<[String: Array<Any>]>
      */
-    open class func syncSettingsFetchPostWithRequestBuilder(fetchSettingsModel: SyncFetchSettingsModel? = nil) -> RequestBuilder<[String: Array]> {
+    open class func syncSettingsFetchPostWithRequestBuilder(fetchSettingsModel: SyncFetchSettingsModel? = nil) -> RequestBuilder<[String: Array<AnyCodable>]> {
         let localVariablePath = "/sync/settings/fetch"
         let localVariableURLString = RevoltAPIClient.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: fetchSettingsModel)
@@ -53,7 +51,7 @@ open class SyncAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[String: Array]>.Type = RevoltAPIClient.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[String: Array<AnyCodable>]>.Type = RevoltAPIClient.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

@@ -213,12 +213,12 @@ open class BotsAPI {
     /**
      Edit Bot
      
-     - parameter inlineObject29Model: (body)  (optional)
+     - parameter editBotModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func botsBotPatch(inlineObject29Model: BotsEditBotModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
-        botsBotPatchWithRequestBuilder(editBotModel: inlineObject29Model).execute(apiResponseQueue) { result -> Void in
+    open class func botsBotPatch(editBotModel: BotsEditBotModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) {
+        botsBotPatchWithRequestBuilder(editBotModel: editBotModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
                 completion((), nil)
@@ -235,7 +235,7 @@ open class BotsAPI {
      - API Key:
        - type: apiKey x-session-token 
        - name: Session Token
-     - parameter inlineObject29Model: (body)  (optional)
+     - parameter editBotModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func botsBotPatchWithRequestBuilder(editBotModel: BotsEditBotModel? = nil) -> RequestBuilder<Void> {
@@ -259,12 +259,12 @@ open class BotsAPI {
     /**
      Create Bot
      
-     - parameter inlineObject28Model: (body)  (optional)
+     - parameter createBotModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func botsCreatePost(inlineObject28Model: BotsCreateBotModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: BotModel?, _ error: Error?) -> Void)) {
-        botsCreatePostWithRequestBuilder(inlineObject28Model: inlineObject28Model).execute(apiResponseQueue) { result -> Void in
+    open class func botsCreatePost(createBotModel: BotsCreateBotModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: BotModel?, _ error: Error?) -> Void)) {
+        botsCreatePostWithRequestBuilder(createBotModel: createBotModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -281,7 +281,7 @@ open class BotsAPI {
      - API Key:
        - type: apiKey x-session-token 
        - name: Session Token
-     - parameter inlineObject28Model: (body)  (optional)
+     - parameter createBotModel: (body)  (optional)
      - returns: RequestBuilder<BotModel> 
      */
     open class func botsCreatePostWithRequestBuilder(createBotModel: BotsCreateBotModel? = nil) -> RequestBuilder<BotModel> {
@@ -326,7 +326,7 @@ open class BotsAPI {
      - API Key:
        - type: apiKey x-session-token 
        - name: Session Token
-     - returns: RequestBuilder<InlineResponse2007Model> 
+     - returns: RequestBuilder<BotsFetchOwnedBotsResponseModel> 
      */
     open class func botsMeGetWithRequestBuilder() -> RequestBuilder<BotsFetchOwnedBotsResponseModel> {
         let localVariablePath = "/bots/@me"

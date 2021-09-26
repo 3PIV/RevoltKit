@@ -10,18 +10,18 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ChannelsMessagingSendMessageModel: Codable, Hashable {
+public struct MessageModel: Codable, Hashable {
     
     /** Message content to send. */
     public var content: String
     /** Nonce value, prefer to use ULIDs here for better feature support.  Used to prevent double requests to create objects. */
     public var nonce: String
     /** Attachments to include in message. */
-    public var attachments: [String]?
+    public var attachments: [AttachmentModel]?
     /** Messages to reply to. */
     public var replies: [ChannelsChannelMessagesRepliesModel]?
     
-    public init(content: String, nonce: String, attachments: [String]? = nil, replies: [ChannelsChannelMessagesRepliesModel]? = nil) {
+    public init(content: String, nonce: String, attachments: [AttachmentModel]? = nil, replies: [ChannelsChannelMessagesRepliesModel]? = nil) {
         self.content = content
         self.nonce = nonce
         self.attachments = attachments

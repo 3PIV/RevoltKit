@@ -16,7 +16,7 @@ let package = Package(
     targets: [
         .target(
             name: "RevoltKit",
-            dependencies: []),
+            dependencies: ["AnyCodable"]),
         .testTarget(
             name: "RevoltKitTests",
             dependencies: ["RevoltKit"]),

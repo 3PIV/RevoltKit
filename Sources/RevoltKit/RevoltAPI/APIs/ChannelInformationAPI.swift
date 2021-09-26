@@ -120,7 +120,7 @@ open class ChannelInformationAPI {
      Edit Channel
      
      - parameter channel: (path) Channel ID 
-     - parameter inlineObject11Model: (body)  (optional)
+     - parameter informationEditChannelModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -146,7 +146,7 @@ open class ChannelInformationAPI {
        - type: apiKey x-session-token 
        - name: Session Token
      - parameter channel: (path) Channel ID 
-     - parameter inlineObject11Model: (body)  (optional)
+     - parameter informationEditChannelModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func channelsChannelPatchWithRequestBuilder(channel: ChannelIDModel, informationEditChannelModel: ChannelsChannelInformationEditChannelModel? = nil) -> RequestBuilder<Void> {

@@ -15,7 +15,7 @@ open class OnboardingAPI {
     /**
      Complete Onboarding
      
-     - parameter inlineObjectModel: (body)  (optional)
+     - parameter completeOnboardingModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -37,7 +37,7 @@ open class OnboardingAPI {
      - API Key:
        - type: apiKey x-session-token 
        - name: Session Token
-     - parameter inlineObjectModel: (body)  (optional)
+     - parameter completeOnboardingModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
     open class func onboardCompletePostWithRequestBuilder(completeOnboardingModel: ChatPlatformOnboardingCompleteOnboardingModel? = nil) -> RequestBuilder<Void> {

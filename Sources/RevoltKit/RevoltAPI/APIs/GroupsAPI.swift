@@ -180,12 +180,12 @@ open class GroupsAPI {
     /**
      Create Group
      
-     - parameter inlineObject19Model: (body)  (optional)
+     - parameter createGroupModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func channelsCreatePost(inlineObject19Model: ChannelsGroupsCreateGroupModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: GroupChannelModel?, _ error: Error?) -> Void)) {
-        channelsCreatePostWithRequestBuilder(inlineObject19Model: inlineObject19Model).execute(apiResponseQueue) { result -> Void in
+    open class func channelsCreatePost(createGroupModel: ChannelsGroupsCreateGroupModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: GroupChannelModel?, _ error: Error?) -> Void)) {
+        channelsCreatePostWithRequestBuilder(createGroupModel: createGroupModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -202,7 +202,7 @@ open class GroupsAPI {
      - API Key:
        - type: apiKey x-session-token 
        - name: Session Token
-     - parameter inlineObject19Model: (body)  (optional)
+     - parameter createGroupModel: (body)  (optional)
      - returns: RequestBuilder<GroupChannelModel> 
      */
     open class func channelsCreatePostWithRequestBuilder(createGroupModel: ChannelsGroupsCreateGroupModel? = nil) -> RequestBuilder<GroupChannelModel> {
