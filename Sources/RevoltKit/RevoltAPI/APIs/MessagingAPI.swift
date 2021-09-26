@@ -301,7 +301,7 @@ open class MessagingAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func channelsChannelMessagesPost(channel: ChannelIDModel, sendMessageModel: MessageModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: MessageModel?, _ error: Error?) -> Void)) {
+    open class func channelsChannelMessagesPost(channel: ChannelIDModel, sendMessageModel: MessageModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: ChannelsMessagingSendMessageResponseModel?, _ error: Error?) -> Void)) {
         channelsChannelMessagesPostWithRequestBuilder(channel: channel, sendMessageModel: sendMessageModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -355,7 +355,7 @@ open class MessagingAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func channelsChannelMessagesSearchPost(channel: ChannelIDModel, searchForMessagesModel: ChannelsMessagingSearchForMessagesModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: [?, _ error: Error?) -> Void)) {
+    open class func channelsChannelMessagesSearchPost(channel: ChannelIDModel, searchForMessagesModel: ChannelsMessagingSearchForMessagesModel? = nil, apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: [ChannelsMessagingSearchForMessagesModel]?, _ error: Error?) -> Void)) {
         channelsChannelMessagesSearchPostWithRequestBuilder(channel: channel, searchForMessagesModel: searchForMessagesModel).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -380,7 +380,7 @@ open class MessagingAPI {
      - parameter searchForMessagesModel: (body)  (optional)
      - returns: RequestBuilder<A[ChannelsMessagingSearchForMessagesModel]?> 
      */
-    open class func channelsChannelMessagesSearchPostWithRequestBuilder(channel: ChannelIDModel, searchForMessagesModel: ChannelsMessagingSearchForMessagesModel? = nil) -> RequestBuilder<[ChannelsMessagingSearchForMessagesModel]?> {
+    open class func channelsChannelMessagesSearchPostWithRequestBuilder(channel: ChannelIDModel, searchForMessagesModel: ChannelsMessagingSearchForMessagesModel? = nil) -> RequestBuilder<[ChannelsMessagingSearchForMessagesModel]> {
         var localVariablePath = "/channels/:channel/messages/search"
         let channelPreEscape = "\(APIHelper.mapValueToPathItem(channel))"
         let channelPostEscape = channelPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -396,7 +396,7 @@ open class MessagingAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[ChannelsMessagingSearchForMessagesModel]?>.Type = RevoltAPIClient.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[ChannelsMessagingSearchForMessagesModel]>.Type = RevoltAPIClient.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

@@ -18,7 +18,7 @@ open class DirectMessagingAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func usersDmsGet(apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: [AnyOfobjectobjectModel]?, _ error: Error?) -> Void)) {
+    open class func usersDmsGet(apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, completion: @escaping ((_ data: [DirectMessageChannelModel]?, _ error: Error?) -> Void)) {
         usersDmsGetWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -41,7 +41,7 @@ open class DirectMessagingAPI {
        - name: Session Token
      - returns: RequestBuilder<[AnyOfobjectobjectModel]> 
      */
-    open class func usersDmsGetWithRequestBuilder() -> RequestBuilder<[AnyOfobjectobjectModel]> {
+    open class func usersDmsGetWithRequestBuilder() -> RequestBuilder<[DirectMessageChannelModel]> {
         let localVariablePath = "/users/dms"
         let localVariableURLString = RevoltAPIClient.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -54,7 +54,7 @@ open class DirectMessagingAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[AnyOfobjectobjectModel]>.Type = RevoltAPIClient.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[DirectMessageChannelModel]>.Type = RevoltAPIClient.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
