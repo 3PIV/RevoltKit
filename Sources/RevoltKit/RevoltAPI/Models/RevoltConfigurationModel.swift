@@ -16,7 +16,7 @@ public struct RevoltConfigurationModel: Codable, Hashable {
     public var revolt: String
     
     public struct RevoltFeatures: Codable, Hashable {
-        public var registration: Bool
+        public var registration: Bool?
         
         public struct RevoltCaptcha: Codable, Hashable {
             public var enabled: Bool
@@ -31,7 +31,7 @@ public struct RevoltConfigurationModel: Codable, Hashable {
         
         public var email: Bool
         
-        public var invite_only: String
+        @TruthyWrapper public var invite_only: Bool
         
         public struct RevoltAutumn: Codable, Hashable {
             public var enabled: Bool

@@ -7,4 +7,4 @@
 
 import Foundation
 
-let clientAPI = RevoltAPIClient()
+let clientAPI = RevoltAPIClient

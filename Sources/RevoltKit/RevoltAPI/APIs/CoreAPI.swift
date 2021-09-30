@@ -23,8 +23,10 @@ open class CoreAPI {
             switch result {
             case let .success(response):
                 completion(response.body, nil)
+                break
             case let .failure(error):
                 completion(nil, error)
+                break
             }
         }
     }

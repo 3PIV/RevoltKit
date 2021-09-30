@@ -44,7 +44,8 @@ open class RequestBuilder<T> {
         }
     }
 
-    open func execute(_ apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, _ completion: @escaping (_ result: Swift.Result<Response<T>, Error>) -> Void) { }
+    open func execute(_ apiResponseQueue: DispatchQueue = RevoltAPIClient.apiResponseQueue, _ completion: @escaping (_ result: Swift.Result<Response<T>, Error>) -> Void) {
+    }
 
     public func addHeader(name: String, value: String) -> Self {
         if !value.isEmpty {
